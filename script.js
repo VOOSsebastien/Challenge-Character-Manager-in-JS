@@ -13,10 +13,27 @@ const s = async () => {
     let b = document.getElementById("container").appendChild(a);
     a.className = "card";
     let k = character[i].name;
+    //ici site
+    const site = "http://127.0.0.1:5500/";
+    const name = character[i].name;
+    const desc = character[i].description;
+    const img_solo = character[i].image;
     a.addEventListener(
       "click",
       function () {
-        location.href = "perso.html";
+        const url = site + name;
+        console.log(character);
+        window
+          .open(url, "_self")
+          .document.write(
+            '<body id="body"><h1>' +
+              name +
+              "</h1><img src=data:image/png;base64," +
+              img_solo +
+              "><div>" +
+              desc +
+              "</div></body>"
+          );
       },
       false
     );
@@ -42,5 +59,3 @@ const s = async () => {
 window.addEventListener("load", function () {
   s();
 });
-var character;
-console.log(character);
