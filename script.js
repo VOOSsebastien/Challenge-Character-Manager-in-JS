@@ -1,9 +1,44 @@
 let i = 0;
 var d = document.getElementById("btn+");
+var a = document.createElement("div");
+var o = document.getElementById("container");
+
 document.body.before(d);
 d.addEventListener("click", function () {
-  fetch(`https://character-database.becode.xyz/characters/${l}`, {
-    method: "POST",
+  var se = document.createElement("div");
+  o.appendChild(se);
+  se.setAttribute("class", "card");
+  ////////////////////////
+  let cardimg = document.createElement("img");
+  cardimg.setAttribute("class", "card_img");
+  cardimg.setAttribute("src", "data:image/png;base64,");
+  se.appendChild(cardimg);
+  /////////////////////////
+  let cardName = document.createElement("div");
+  cardName.setAttribute("class", "card_name");
+  se.appendChild(cardName);
+  ////////////////////////
+
+  let cardDesc = document.createElement("div");
+  cardDesc.setAttribute("class", "card_desc");
+  se.appendChild(cardDesc);
+  /////////////////////
+  let btnDetails = document.createElement("button");
+  btnDetails.setAttribute("class", "btn_details");
+  se.appendChild(btnDetails);
+  btnDetails.innerHTML = "details";
+  ////////////////////
+  let btnEdit = document.createElement("button");
+  btnEdit.setAttribute("class", "btn_edit");
+  a.appendChild(btnEdit);
+  btnEdit.innerHTML = "edit";
+  /////////////////////
+  let btnDelete = document.createElement("button");
+  cardDesc.setAttribute("class", "btn_delete");
+  a.appendChild(btnDelete);
+  btnDelete.innerHTML = "delete";
+  fetch(`https://character-database.becode.xyz/characters`, {
+    //method: "POST",
   });
 });
 const s = async () => {
@@ -81,15 +116,15 @@ const s = async () => {
       },
       false
     );
-    btnDelete.addEventListener("click", function () {
+    btnDelete.addEventListener("click", async function () {
       console.log(l);
       if (confirm("Are you sure you want to delete this character?")) {
         fetch(`https://character-database.becode.xyz/characters/${l}`, {
           method: "DELETE",
         });
-        if (response != null) {
-          location.reload();
-        }
+        location.reload;
+        //        const attenti = await response.json();
+        //        attenti.location.reload;
       } else {
         alert("This character has not been deleted");
       }
