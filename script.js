@@ -42,7 +42,7 @@ const s = async () => {
     cardimg.setAttribute("class", "card_img");
     cardimg.setAttribute("src", "data:image/png;base64," + character[i].image);
     a.appendChild(cardimg);
-    /////////////////////////:
+    /////////////////////////
     let cardName = document.createElement("div");
     cardName.setAttribute("class", "card_name");
     a.appendChild(cardName);
@@ -50,6 +50,16 @@ const s = async () => {
     ////////////////////////
 
     let cardDesc = document.createElement("div");
+    cardDesc.setAttribute("class", "card_desc");
+    a.appendChild(cardDesc);
+    cardDesc.innerHTML = character[i].shortDescription;
+    /////////////////////
+    let btnEdit = document.createElement("button");
+    btnEdit.setAttribute("class", "card_desc");
+    a.appendChild(cardDesc);
+    cardDesc.innerHTML = character[i].shortDescription;
+    /////////////////////
+    let btnDlete = document.createElement("button");
     cardDesc.setAttribute("class", "card_desc");
     a.appendChild(cardDesc);
     cardDesc.innerHTML = character[i].shortDescription;
