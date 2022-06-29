@@ -23,14 +23,14 @@ const s = async () => {
       function () {
         const url = site + name;
         console.log(character);
-        window
+        const solo = window
           .open(url, "_self")
           .document.write(
-            '<body id="body"><h1>' +
+            "<body id='body'class='card_solo'><link rel='stylesheet' href='src/css/style.css' /><a class='refresh_cross' href = '' onclick = 'Refresh()'>X</a><h1 class='card_name_solo'>" +
               name +
-              "</h1><img src=data:image/png;base64," +
+              "</h1><img class='card_img_solo' src=data:image/png;base64," +
               img_solo +
-              "><div>" +
+              "><div class='card_desc_solo'>" +
               desc +
               "</div></body>"
           );
@@ -38,21 +38,21 @@ const s = async () => {
       false
     );
     ////////////////////////
-
-    let cardName = document.createElement("div");
-    cardName.setAttribute("class", "card_name");
-    a.appendChild(cardName);
-    cardName.innerHTML = character[i].name;
-    /////////////////////////:
-    let cardDesc = document.createElement("div");
-    cardDesc.setAttribute("class", "card_desc");
-    a.appendChild(cardDesc);
-    cardDesc.innerHTML = character[i].shortDescription;
-    ////////////////////////
     let cardimg = document.createElement("img");
     cardimg.setAttribute("class", "card_img");
     cardimg.setAttribute("src", "data:image/png;base64," + character[i].image);
     a.appendChild(cardimg);
+    /////////////////////////:
+    let cardName = document.createElement("div");
+    cardName.setAttribute("class", "card_name");
+    a.appendChild(cardName);
+    cardName.innerHTML = character[i].name;
+    ////////////////////////
+
+    let cardDesc = document.createElement("div");
+    cardDesc.setAttribute("class", "card_desc");
+    a.appendChild(cardDesc);
+    cardDesc.innerHTML = character[i].shortDescription;
   }
 };
 
