@@ -30,15 +30,15 @@ d.addEventListener("click", function () {
   ////////////////////
   let btnEdit = document.createElement("button");
   btnEdit.setAttribute("class", "btn_edit");
-  a.appendChild(btnEdit);
+  se.appendChild(btnEdit);
   btnEdit.innerHTML = "edit";
   /////////////////////
   let btnDelete = document.createElement("button");
   cardDesc.setAttribute("class", "btn_delete");
-  a.appendChild(btnDelete);
+  se.appendChild(btnDelete);
   btnDelete.innerHTML = "delete";
   fetch(`https://character-database.becode.xyz/characters`, {
-    //method: "POST",
+    method: "POST",
   });
 });
 const s = async () => {
@@ -56,7 +56,7 @@ const s = async () => {
     a.className = "card";
     let k = character[i].name;
     //ici site
-    let l = character[i].id;
+    let l = character[i].desc;
     const site = "http://127.0.0.1:5500/";
     const name = character[i].name;
     const desc = character[i].description;
