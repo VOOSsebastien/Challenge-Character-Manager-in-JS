@@ -1,4 +1,11 @@
 let i = 0;
+var d = document.getElementById("btn+");
+document.body.before(d);
+d.addEventListener("click", function () {
+  fetch(`https://character-database.becode.xyz/characters/${l}`, {
+    method: "POST",
+  });
+});
 const s = async () => {
   const response = await fetch(
     "https://character-database.becode.xyz/characters"
@@ -14,11 +21,48 @@ const s = async () => {
     a.className = "card";
     let k = character[i].name;
     //ici site
+    let l = character[i].id;
     const site = "http://127.0.0.1:5500/";
     const name = character[i].name;
     const desc = character[i].description;
     const img_solo = character[i].image;
-    a.addEventListener(
+    /////////////////////////////:
+
+    ////////////////////////
+    let cardimg = document.createElement("img");
+    cardimg.setAttribute("class", "card_img");
+    cardimg.setAttribute("src", "data:image/png;base64," + character[i].image);
+    a.appendChild(cardimg);
+    /////////////////////////
+    let cardName = document.createElement("div");
+    cardName.setAttribute("class", "card_name");
+    a.appendChild(cardName);
+    cardName.innerHTML = character[i].name;
+    ////////////////////////
+
+    let cardDesc = document.createElement("div");
+    cardDesc.setAttribute("class", "card_desc");
+    a.appendChild(cardDesc);
+    cardDesc.innerHTML = character[i].shortDescription;
+    /////////////////////
+    let btnDetails = document.createElement("button");
+    btnDetails.setAttribute("class", "btn_details");
+    a.appendChild(btnDetails);
+    btnDetails.innerHTML = "details";
+    ////////////////////
+    let btnEdit = document.createElement("button");
+    btnEdit.setAttribute("class", "btn_edit");
+    a.appendChild(btnEdit);
+    btnEdit.innerHTML = "edit";
+    /////////////////////
+    let btnDelete = document.createElement("button");
+    cardDesc.setAttribute("class", "btn_delete");
+    a.appendChild(btnDelete);
+    btnDelete.innerHTML = "delete";
+    ////////////////////////////////:
+    /////////addlistener
+    //////////////////////////////
+    btnDetails.addEventListener(
       "click",
       function () {
         const url = site + name;
@@ -37,32 +81,19 @@ const s = async () => {
       },
       false
     );
-    ////////////////////////
-    let cardimg = document.createElement("img");
-    cardimg.setAttribute("class", "card_img");
-    cardimg.setAttribute("src", "data:image/png;base64," + character[i].image);
-    a.appendChild(cardimg);
-    /////////////////////////
-    let cardName = document.createElement("div");
-    cardName.setAttribute("class", "card_name");
-    a.appendChild(cardName);
-    cardName.innerHTML = character[i].name;
-    ////////////////////////
-
-    let cardDesc = document.createElement("div");
-    cardDesc.setAttribute("class", "card_desc");
-    a.appendChild(cardDesc);
-    cardDesc.innerHTML = character[i].shortDescription;
-    /////////////////////
-    let btnEdit = document.createElement("button");
-    btnEdit.setAttribute("class", "card_desc");
-    a.appendChild(cardDesc);
-    cardDesc.innerHTML = character[i].shortDescription;
-    /////////////////////
-    let btnDlete = document.createElement("button");
-    cardDesc.setAttribute("class", "card_desc");
-    a.appendChild(cardDesc);
-    cardDesc.innerHTML = character[i].shortDescription;
+    btnDelete.addEventListener("click", function () {
+      console.log(l);
+      if (confirm("Are you sure you want to delete this character?")) {
+        fetch(`https://character-database.becode.xyz/characters/${l}`, {
+          method: "DELETE",
+        });
+        if (response != null) {
+          location.reload();
+        }
+      } else {
+        alert("This character has not been deleted");
+      }
+    });
   }
 };
 
